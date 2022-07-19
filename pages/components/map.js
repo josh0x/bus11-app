@@ -12,7 +12,7 @@ const Map = () => {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-63.076094425521255, 18.094497883416697],
-      zoom: 11.5,
+      zoom: 12,
     });
   });
 
@@ -22,5 +22,5 @@ const Map = () => {
 export default Map;
 
 const Wrapper = tw.div`
-    flex-1
+bg-red-500 flex-1
 `;
