@@ -128,7 +128,7 @@ w-5/6 border border-black
 `;
 // Around the icons and inputs
 const RouteActions = tw.div`
-flex flex-colo border items-center justify-center my-44
+flex flex-colo border justify-center my-44
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
@@ -148,7 +148,7 @@ border p-4 object-contain scale-50
 `;
 // Around location input fields
 const LocationBoxes = tw.div`
-flex flex-col border justify-center border-blue-800
+flex flex-col border border-blue-800 justify-between py-10
 `;
 // Text box
 const Input = tw.input`
