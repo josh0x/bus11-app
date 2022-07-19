@@ -10,7 +10,7 @@ export default function Route() {
     <Wrapper>
       {/* Nav bar */}
       <Header>
-        <Link href="/home">
+        <Link href="/">
           <Logo src="https://i.pinimg.com/originals/c2/98/27/c2982793e4e308c03c9800c4a99f363d.jpg" />
         </Link>
         {/* <ButtonContainer>
