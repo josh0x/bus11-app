@@ -62,8 +62,7 @@ export default function Route() {
         </RouteContainer>
       </ActionItems>
       <Footer>
-        Developed by Joshua Bowers. Commissioned by MP Rolando Brison. For the
-        people of SXM 🇸🇽{" "}
+        Developed by Joshua Bowers | 🇸🇽 | Commissioned by MP Rolando Brison.
       </Footer>
     </Wrapper>
   );
@@ -71,7 +70,7 @@ export default function Route() {
 
 // Tailwind Style components
 const Wrapper = tw.div`
-flex flex-col h-screen pl-10 pr-10 pt-2 border border-teal-600
+flex flex-col h-screen pl-10 pr-10 pt-2
 `;
 
 // Navbar
@@ -96,11 +95,11 @@ h-12 w-12 rounded-full
 `;
 // User section
 const ActionItems = tw.div`
-flex-1 flex flex-row border border-yellow-700 
+flex-1 flex flex-row border border-black 
 `;
 
 const ActionButtons = tw.div`
-flex  flex-col items-center w-1/6 border border-blue-500 justify-center justify-between my-36
+flex  flex-col items-center w-1/6 justify-center justify-between my-36
 `;
 
 const ActionButton = tw.div`
@@ -112,7 +111,7 @@ h-2/5
 `;
 // Text bottom
 const Footer = tw.div`
-h-20 text-2xl p-4 flex items-center border font-helvetica
+h-20 text-2xl p-4 border border-black font-helvetica 
 `;
 
 const ButtonContainer = tw.div`
@@ -124,37 +123,33 @@ h-12 scale-75 object-contain rotate-180
 `;
 // The entire route div
 const RouteContainer = tw.div`
-w-5/6 border border-black 
+w-5/6 border border-l-black 
 `;
 // Around the icons and inputs
 const RouteActions = tw.div`
-flex flex-colo border justify-center my-44
+flex flex-colo  justify-center my-44
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-border border-pink-700 md:w-32 lg:w-48 p-6 
+md:w-48 lg:w-48 p-6 
 `;
 
 const OriginIcon = tw.img`
-border object-contain scale-50
+object-contain scale-50
 `;
 
 const Line = tw.img`
-scale-50 rotate-90 border p-4 object-contain
+scale-50 rotate-90 p-4 object-contain
 `;
 
 const DestinationIcon = tw.img`
-border p-4 object-contain scale-50
+p-4 object-contain scale-50
 `;
 // Around location input fields
 const LocationBoxes = tw.div`
-flex flex-col border border-blue-800 justify-between py-10
+flex flex-col justify-between py-10
 `;
 // Text box
 const Input = tw.input`
 h-14 bg-gray-200 my-6 mx-4 outline-none border-none h-16 w-96 pl-10 text-xl
-`;
-
-const SearchAction = tw.div`
-flex items-center bg-white border px-4 border-teal-900
 `;
