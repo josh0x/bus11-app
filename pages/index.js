@@ -70,7 +70,7 @@ h-12 w-12 rounded-full
 `;
 
 const ActionItems = tw.div`
-flex-1 p-4 shadow-md
+flex-1 p-4 shadow-md 
 `;
 
 const ActionButtons = tw.div`

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect} from "react";
 import Head from "next/head";
 import Image from "next/image";
 import tw from "tailwind-styled-components";
@@ -13,12 +13,12 @@ export default function Route() {
         <Link href="/home">
           <Logo src="https://i.pinimg.com/originals/c2/98/27/c2982793e4e308c03c9800c4a99f363d.jpg" />
         </Link>
-        <ButtonContainer>
-          <Link href="/">
+        {/* <ButtonContainer>
+          <Link href="/"> */}
             {/* <BackButton src="https://i.pinimg.com/564x/c4/c8/c4/c4c8c425bee8fb9e9af842a865442a57.jpg" /> */}
-            <BackButton src="https://cdn-icons.flaticon.com/png/512/2040/premium/2040514.png?token=exp=1658074793~hmac=a9eea04ab4691db8cc17b3e54c292a63" />
+            {/* <BackButton src="https://cdn-icons.flaticon.com/png/512/2040/premium/2040514.png?token=exp=1658074793~hmac=a9eea04ab4691db8cc17b3e54c292a63" />
           </Link>
-        </ButtonContainer>
+        </ButtonContainer> */}
         <Profile>
           <Name>Rolando Brison</Name>
           <UserImage src="https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/240593076_10165775712425088_6366602392358673388_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=m0XMRi9IFIQAX9PkZio&_nc_ht=scontent-ams4-1.xx&oh=00_AT_RqYnWqr0Q1khMmH-UvOVXYa2fUaKQrTjclT_rJCbmsg&oe=62D63234" />
@@ -59,6 +59,11 @@ export default function Route() {
               <Input placeholder="Destination" />
             </LocationBoxes>
           </RouteActions>
+          <SearchSection>
+            <SearchButton>
+              Search
+            </SearchButton>
+          </SearchSection>
         </RouteContainer>
       </ActionItems>
       <Footer>
@@ -99,7 +104,7 @@ flex-1 flex flex-row border border-black
 `;
 
 const ActionButtons = tw.div`
-flex  flex-col items-center w-1/6 justify-center justify-between my-36
+flex flex-col items-center w-1/6 justify-center justify-between my-36 mx-16
 `;
 
 const ActionButton = tw.div`
@@ -111,9 +116,9 @@ h-2/5
 `;
 // Text bottom
 const Footer = tw.div`
-h-20 text-2xl p-4 border border-black font-helvetica 
+h-20 text-2xl p-4 border border-black font-helvetica text-center
 `;
-
+// Back button
 const ButtonContainer = tw.div`
 
 `;
@@ -123,19 +128,19 @@ h-12 scale-75 object-contain rotate-180
 `;
 // The entire route div
 const RouteContainer = tw.div`
-w-5/6 border border-l-black 
+w-5/6 flex flex-col border border-l-black
 `;
 // Around the icons and inputs
 const RouteActions = tw.div`
-flex flex-colo  justify-center my-44
+flex h-3/4 justify-center 
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-md:w-48 lg:w-48 p-6 
+md:w-48 lg:w-48 p-6 justify-center my-24
 `;
 
 const OriginIcon = tw.img`
-object-contain scale-50
+object-contain scale-75
 `;
 
 const Line = tw.img`
@@ -143,12 +148,22 @@ scale-50 rotate-90 p-4 object-contain
 `;
 
 const DestinationIcon = tw.img`
-p-4 object-contain scale-50
+p-4 object-contain scale-75
 `;
 // Around location input fields
 const LocationBoxes = tw.div`
-flex flex-col justify-between py-10
+flex flex-col justify-between py-32
 `;
+
+//Search section
+const SearchSection = tw.div`
+flex-1
+`;
+
+const SearchButton = tw.div`
+bg-black text-white text-center mt-6 py-8 mx-4 text-2xl rounded-md w-4/5 ml-20
+`;
+
 // Text box
 const Input = tw.input`
 h-14 bg-gray-200 my-6 mx-4 outline-none border-none h-16 w-96 pl-10 text-xl
