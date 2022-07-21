@@ -4,8 +4,25 @@ import Image from "next/image";
 import tw from "tailwind-styled-components";
 import Map from "./components/Map";
 import Link from "next/link";
+import { Fragment, useState } from "react";
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const locations = [
+  { name: "Philipsburg" },
+  { name: "Maho" },
+  { name: "Dutch Quarter" },
+  { name: "St. Peters" },
+  { name: "French Quarter" },
+];
 
 export default function Route() {
+  const [selected, setSelected] = useState(locations[0]);
+
   return (
     <Wrapper>
       {/* Nav bar */}
@@ -13,14 +30,8 @@ export default function Route() {
         <Link href="/">
           <Logo src="https://i.pinimg.com/originals/c2/98/27/c2982793e4e308c03c9800c4a99f363d.jpg" />
         </Link>
-        {/* <ButtonContainer>
-          <Link href="/"> */}
-        {/* <BackButton src="https://i.pinimg.com/564x/c4/c8/c4/c4c8c425bee8fb9e9af842a865442a57.jpg" /> */}
-        {/* <BackButton src="https://cdn-icons.flaticon.com/png/512/2040/premium/2040514.png?token=exp=1658074793~hmac=a9eea04ab4691db8cc17b3e54c292a63" />
-          </Link>
-        </ButtonContainer> */}
         <Profile>
-          <Name>Melissa Richardson</Name>
+          <Name>Kim Woods</Name>
           <UserImage src="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80" />
         </Profile>
       </Header>
@@ -32,21 +43,19 @@ export default function Route() {
           <Link href="/route">
             <ActionButton>
               <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/4317/4317907.png" />
-              {/* <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/2554/2554966.png" /> */}
               Bus Route
             </ActionButton>
           </Link>
           <ActionButton>
             <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/8059/8059503.png" />
-            {/* <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/1186/1186562.png" /> */}
             Radio
           </ActionButton>
           <ActionButton>
             <ActionButtonImage src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=022" />
-            {/* <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/7016/7016539.png" /> */}
             Donation
           </ActionButton>
         </ActionButtons>
+        {/* Route Container */}
         <RouteContainer>
           <RouteActions>
             <FromToIcons>
@@ -55,8 +64,63 @@ export default function Route() {
               <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
             </FromToIcons>
             <LocationBoxes>
-              <Input placeholder="Location" />
-              <Input placeholder="Destination" />
+              <div className="fixed top-16 w-72">
+                <Listbox value={selected} onChange={setSelected}>
+                  <div className="relative mt-1">
+                    <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                      <span className="block truncate">{selected.name}</span>
+                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                        <SelectorIcon
+                          className="h-5 w-5 text-gray-400"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </Listbox.Button>
+                    <Transition
+                      as={Fragment}
+                      leave="transition ease-in duration-100"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                        {locations.map((location, locationIdx) => (
+                          <Listbox.Option
+                            key={locationIdx}
+                            className={({ active }) =>
+                              `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                                active
+                                  ? "bg-amber-100 text-amber-900"
+                                  : "text-gray-900"
+                              }`
+                            }
+                            value={location}
+                          >
+                            {({ selected }) => (
+                              <>
+                                <span
+                                  className={`block truncate ${
+                                    selected ? "font-medium" : "font-normal"
+                                  }`}
+                                >
+                                  {location.name}
+                                </span>
+                                {selected ? (
+                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                                    <CheckIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  </span>
+                                ) : null}
+                              </>
+                            )}
+                          </Listbox.Option>
+                        ))}
+                      </Listbox.Options>
+                    </Transition>
+                  </div>
+                </Listbox>
+              </div>
             </LocationBoxes>
           </RouteActions>
           <SearchSection>
@@ -155,11 +219,11 @@ flex flex-col border
 
 //Search section
 const SearchSection = tw.div`
-flex border justify-center h-1/4
+border
 `;
 
 const SearchButton = tw.div`
-bg-black text-white text-center text-2xl rounded-md w-3/5 p-6 m-6
+bg-black text-white text-center text-3xl rounded-md w-3/5 p-6
 `;
 
 // Text box
