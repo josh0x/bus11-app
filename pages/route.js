@@ -64,14 +64,14 @@ export default function Route() {
               <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
             </FromToIcons>
             <LocationBoxes>
-              <div className="fixed top-16 w-72">
+              <div className="mx-10 bg-black rounded-md">
                 <Listbox value={selected} onChange={setSelected}>
-                  <div className="relative mt-1">
-                    <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                      <span className="block truncate">{selected.name}</span>
-                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                  <div className="relative">
+                    <Listbox.Button className="relative w-full text-white cursor-default rounded-md bg-black py-4 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
+                      <span className=" block truncate">{selected.name}</span>
+                      <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <SelectorIcon
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-white"
                           aria-hidden="true"
                         />
                       </span>
@@ -82,15 +82,15 @@ export default function Route() {
                       leaveFrom="opacity-100"
                       leaveTo="opacity-0"
                     >
-                      <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      <Listbox.Options className="absolute mt-1 max-h-60 w-full ml-4 overflow-auto rounded-md bg-black py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none md:text-md">
                         {locations.map((location, locationIdx) => (
                           <Listbox.Option
                             key={locationIdx}
                             className={({ active }) =>
                               `relative cursor-default select-none py-2 pl-10 pr-4 ${
                                 active
-                                  ? "bg-amber-100 text-amber-900"
-                                  : "text-gray-900"
+                                  ? "bg-black text-white"
+                                  : "bg-black text-white"
                               }`
                             }
                             value={location}
@@ -105,7 +105,7 @@ export default function Route() {
                                   {location.name}
                                 </span>
                                 {selected ? (
-                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
                                     <CheckIcon
                                       className="h-5 w-5"
                                       aria-hidden="true"
