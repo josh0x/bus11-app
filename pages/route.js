@@ -89,7 +89,7 @@ export default function Route() {
                             className={({ active }) =>
                               `relative cursor-default select-none py-2 pl-10 pr-4 ${
                                 active
-                                  ? "bg-black text-white"
+                                  ? "bg-blue-500 text-white"
                                   : "bg-black text-white"
                               }`
                             }
