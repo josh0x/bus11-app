@@ -64,7 +64,7 @@ export default function Route() {
               <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
             </FromToIcons>
             <LocationBoxes>
-              <div className="mx-10 bg-black rounded-md">
+              <div className="mx-10 mt-10 w-56 bg-black rounded-md">
                 <Listbox value={selected} onChange={setSelected}>
                   <div className="relative">
                     <Listbox.Button className="relative w-full text-white cursor-default rounded-md bg-black py-4 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
@@ -121,6 +121,9 @@ export default function Route() {
                   </div>
                 </Listbox>
               </div>
+
+              {/* DESTINATION */}
+              
             </LocationBoxes>
           </RouteActions>
           <SearchSection>
