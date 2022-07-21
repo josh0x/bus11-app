@@ -15,8 +15,8 @@ function classNames(...classes) {
 const locations = [
   { name: "Philipsburg" },
   { name: "Maho" },
-  { name: "Dutch Quarter" },
   { name: "St. Peters" },
+  { name: "Dutch Quarter" },
   { name: "French Quarter" },
 ];
 
@@ -64,14 +64,14 @@ export default function Route() {
               <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
             </FromToIcons>
             <LocationBoxes>
-              <div className="mx-10 mt-10 w-56 bg-black rounded-md">
+              <div className=" mt-10 w-48 bg-black rounded-md">
                 <Listbox value={selected} onChange={setSelected}>
                   <div className="relative">
-                    <Listbox.Button className="relative w-full text-white cursor-default rounded-md bg-black py-4 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
+                    <Listbox.Button className="relative w-full text-xl text-white cursor-default rounded-md bg-black py-4 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
                       <span className=" block truncate">{selected.name}</span>
-                      <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                      <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
                         <SelectorIcon
-                          className="h-5 w-5 text-white"
+                          className="h-7 w-7 text-white"
                           aria-hidden="true"
                         />
                       </span>
@@ -201,7 +201,7 @@ flex h-3/4 justify-center h-full
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-md:w-32 lg:w-32 border
+md:w-32 lg:w-32 
 `;
 
 const OriginIcon = tw.img`
@@ -217,7 +217,7 @@ object-contain scale-75
 `;
 // Around location input fields
 const LocationBoxes = tw.div`
-flex flex-col border
+flex flex-col 
 `;
 
 //Search section
