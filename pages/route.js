@@ -1,11 +1,33 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import tw from "tailwind-styled-components";
 import Map from "./components/Map";
 import Link from "next/link";
+import { Fragment, useState } from "react";
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const locations = [
+  { name: "Philipsburg" },
+  { name: "Maho" },
+  { name: "St. Peters" },
+  { name: "Dutch Quarter" },
+  { name: "French Quarter" },
+  { name: "Philipsburg" },
+  { name: "Maho" },
+  { name: "St. Peters" },
+  { name: "Dutch Quarter" },
+  { name: "French Quarter" },
+];
 
 export default function Route() {
+  const [selected, setSelected] = useState(locations[0]);
+
   return (
     <Wrapper>
       {/* Nav bar */}
@@ -13,78 +35,120 @@ export default function Route() {
         <Link href="/">
           <Logo src="https://i.pinimg.com/originals/c2/98/27/c2982793e4e308c03c9800c4a99f363d.jpg" />
         </Link>
-        {/* <ButtonContainer>
-          <Link href="/"> */}
-            {/* <BackButton src="https://i.pinimg.com/564x/c4/c8/c4/c4c8c425bee8fb9e9af842a865442a57.jpg" /> */}
-            {/* <BackButton src="https://cdn-icons.flaticon.com/png/512/2040/premium/2040514.png?token=exp=1658074793~hmac=a9eea04ab4691db8cc17b3e54c292a63" />
-          </Link>
-        </ButtonContainer> */}
         <Profile>
-          <Name>Rolando Brison</Name>
-          <UserImage src="https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/240593076_10165775712425088_6366602392358673388_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=m0XMRi9IFIQAX9PkZio&_nc_ht=scontent-ams4-1.xx&oh=00_AT_RqYnWqr0Q1khMmH-UvOVXYa2fUaKQrTjclT_rJCbmsg&oe=62D63234" />
+          <Name>Kim Woods</Name>
+          <UserImage src="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1372&q=80" />
         </Profile>
       </Header>
       {/* Map */}
-      <Map />
+
       {/* User section */}
       <ActionItems>
         <ActionButtons>
           <Link href="/route">
             <ActionButton>
               <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/4317/4317907.png" />
-              {/* <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/2554/2554966.png" /> */}
               Bus Route
             </ActionButton>
           </Link>
           <ActionButton>
             <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/8059/8059503.png" />
-            {/* <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/1186/1186562.png" /> */}
             Radio
           </ActionButton>
           <ActionButton>
             <ActionButtonImage src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=022" />
-            {/* <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/7016/7016539.png" /> */}
             Donation
           </ActionButton>
         </ActionButtons>
+        {/* Route Container */}
         <RouteContainer>
           <RouteActions>
             <FromToIcons>
+              {/* Origin and dropdown menu */}
               <OriginIcon src="https://cdn-icons-png.flaticon.com/512/6686/6686693.png" />
-              <Line src="https://cdn-icons.flaticon.com/png/512/2990/premium/2990154.png?token=exp=1658092304~hmac=9902be6761ab3c3bd3c09f9a49d7de3a" />
-              <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
+
+              <div className=" mt-10 w-48 bg-black rounded-md">
+                <Listbox value={selected} onChange={setSelected}>
+                  <div className="relative">
+                    <Listbox.Button className="relative w-full text-xl text-white cursor-default rounded-md bg-black py-4 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
+                      <span className=" block truncate">{selected.name}</span>
+                      <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
+                        <SelectorIcon
+                          className="h-7 w-7 text-white"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </Listbox.Button>
+                    <Transition
+                      as={Fragment}
+                      leave="transition ease-in duration-100"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <Listbox.Options className="absolute mt-1 max-h-60 w-full ml-4 overflow-auto rounded-md bg-black py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none md:text-md">
+                        {locations.map((location, locationIdx) => (
+                          <Listbox.Option
+                            key={locationIdx}
+                            className={({ active }) =>
+                              `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                                active
+                                  ? "bg-blue-500 text-white"
+                                  : "bg-black text-white"
+                              }`
+                            }
+                            value={location}
+                          >
+                            {({ selected }) => (
+                              <>
+                                <span
+                                  className={`block truncate ${
+                                    selected ? "font-medium" : "font-normal"
+                                  }`}
+                                >
+                                  {location.name}
+                                </span>
+                                {selected ? (
+                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
+                                    <CheckIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  </span>
+                                ) : null}
+                              </>
+                            )}
+                          </Listbox.Option>
+                        ))}
+                      </Listbox.Options>
+                    </Transition>
+                  </div>
+                </Listbox>
+              </div>
+
+              {/* <Line src="https://cdn-icons.flaticon.com/png/512/2652/premium/2652705.png?token=exp=1658366464~hmac=289a3e744afbd901c4d7cd74adbb1fd4" /> */}
             </FromToIcons>
-            <LocationBoxes>
-              <Input placeholder="Location" />
-              <Input placeholder="Destination" />
-            </LocationBoxes>
           </RouteActions>
           <SearchSection>
-            <SearchButton>
-              Search
-            </SearchButton>
+            <SearchButton>Search</SearchButton>
           </SearchSection>
         </RouteContainer>
       </ActionItems>
-      <Footer>
-        Developed by Joshua Bowers | 🇸🇽 | Commissioned by MP Rolando Brison.
-      </Footer>
     </Wrapper>
   );
 }
 
 // Tailwind Style components
 const Wrapper = tw.div`
-flex flex-col h-screen pl-10 pr-10 pt-2
+flex flex-col h-screen
 `;
 
 // Navbar
 const Header = tw.div`
-flex justify-between items-center pr-4 border-b-2 border-black pb-2
+flex justify-between items-center border-b-4 border-black px-4 py-4 
 `;
 
 const Logo = tw.img`
-h-10
+h-14
 `;
 
 const Profile = tw.div`
@@ -96,23 +160,23 @@ mr-4 w-35
 `;
 
 const UserImage = tw.img`
-h-12 w-12 rounded-full
+h-14 w-14 rounded-full object-contain border border-black
 `;
 // User section
 const ActionItems = tw.div`
-flex-1 flex flex-row border border-black 
+ border border-t-black border-t-4 border-b-black border-b-4
 `;
 
 const ActionButtons = tw.div`
-flex flex-col items-center w-1/6 justify-center justify-between my-36 mx-16
+flex justify-between border items-center
 `;
 
 const ActionButton = tw.div`
-flex border h-28 items-center flex-col justify-center transform hover:scale-110 transition text-xl w-28 shadow-md rounded-sm
+flex border  items-center flex-col justify-center transform hover:scale-110 transition text-xl w-64 shadow-md rounded-sm
 `;
 
 const ActionButtonImage = tw.img`
-h-2/5 
+
 `;
 // Text bottom
 const Footer = tw.div`
@@ -128,40 +192,40 @@ h-12 scale-75 object-contain rotate-180
 `;
 // The entire route div
 const RouteContainer = tw.div`
-w-5/6 flex flex-col border border-l-black
+ flex flex-col border border-l-black h-full h-screen
 `;
 // Around the icons and inputs
 const RouteActions = tw.div`
-flex h-3/4 justify-center 
+flex justify-center h-full border
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-md:w-48 lg:w-48 p-6 justify-center my-24
+border
 `;
 
 const OriginIcon = tw.img`
-object-contain scale-75
+object-contain scale-75 border
 `;
 
 const Line = tw.img`
-scale-50 rotate-90 p-4 object-contain
+scale-50 rotate-90 object-contain
 `;
 
 const DestinationIcon = tw.img`
-p-4 object-contain scale-75
+md:w-32 lg:w-32 object-contain scale-52
 `;
 // Around location input fields
 const LocationBoxes = tw.div`
-flex flex-col justify-between py-32
+flex flex-col border
 `;
 
 //Search section
 const SearchSection = tw.div`
-flex-1
+border
 `;
 
 const SearchButton = tw.div`
-bg-black text-white text-center mt-6 py-8 mx-4 text-2xl rounded-md w-4/5 ml-20
+bg-black text-white text-center text-3xl rounded-md w-3/5 p-6
 `;
 
 // Text box
