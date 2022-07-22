@@ -18,6 +18,11 @@ const locations = [
   { name: "St. Peters" },
   { name: "Dutch Quarter" },
   { name: "French Quarter" },
+  { name: "Philipsburg" },
+  { name: "Maho" },
+  { name: "St. Peters" },
+  { name: "Dutch Quarter" },
+  { name: "French Quarter" },
 ];
 
 export default function Route() {
@@ -36,7 +41,7 @@ export default function Route() {
         </Profile>
       </Header>
       {/* Map */}
-      <Map />
+
       {/* User section */}
       <ActionItems>
         <ActionButtons>
@@ -59,11 +64,9 @@ export default function Route() {
         <RouteContainer>
           <RouteActions>
             <FromToIcons>
+              {/* Origin and dropdown menu */}
               <OriginIcon src="https://cdn-icons-png.flaticon.com/512/6686/6686693.png" />
-              <Line src="https://cdn-icons.flaticon.com/png/512/2652/premium/2652705.png?token=exp=1658366464~hmac=289a3e744afbd901c4d7cd74adbb1fd4" />
-              <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
-            </FromToIcons>
-            <LocationBoxes>
+
               <div className=" mt-10 w-48 bg-black rounded-md">
                 <Listbox value={selected} onChange={setSelected}>
                   <div className="relative">
@@ -122,18 +125,14 @@ export default function Route() {
                 </Listbox>
               </div>
 
-              {/* DESTINATION */}
-              
-            </LocationBoxes>
+              {/* <Line src="https://cdn-icons.flaticon.com/png/512/2652/premium/2652705.png?token=exp=1658366464~hmac=289a3e744afbd901c4d7cd74adbb1fd4" /> */}
+            </FromToIcons>
           </RouteActions>
           <SearchSection>
             <SearchButton>Search</SearchButton>
           </SearchSection>
         </RouteContainer>
       </ActionItems>
-      <Footer>
-        Developed by Joshua Bowers | 🇸🇽 | Commissioned by MP Rolando Brison.
-      </Footer>
     </Wrapper>
   );
 }
@@ -165,19 +164,19 @@ h-14 w-14 rounded-full object-contain border border-black
 `;
 // User section
 const ActionItems = tw.div`
-flex-1 flex flex-row border border-t-black border-t-4 border-b-black border-b-4
+ border border-t-black border-t-4 border-b-black border-b-4
 `;
 
 const ActionButtons = tw.div`
-flex flex-col w-1/6 justify-between border h-full items-center py-10
+flex justify-between border items-center
 `;
 
 const ActionButton = tw.div`
-flex border h-28 items-center flex-col justify-center transform hover:scale-110 transition text-xl w-28 shadow-md rounded-sm
+flex border  items-center flex-col justify-center transform hover:scale-110 transition text-xl w-64 shadow-md rounded-sm
 `;
 
 const ActionButtonImage = tw.img`
-h-2/5 
+
 `;
 // Text bottom
 const Footer = tw.div`
@@ -193,19 +192,19 @@ h-12 scale-75 object-contain rotate-180
 `;
 // The entire route div
 const RouteContainer = tw.div`
-w-5/6 flex flex-col border border-l-black
+ flex flex-col border border-l-black h-full h-screen
 `;
 // Around the icons and inputs
 const RouteActions = tw.div`
-flex h-3/4 justify-center h-full
+flex justify-center h-full border
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-md:w-32 lg:w-32 
+border
 `;
 
 const OriginIcon = tw.img`
-object-contain scale-75
+object-contain scale-75 border
 `;
 
 const Line = tw.img`
@@ -213,11 +212,11 @@ scale-50 rotate-90 object-contain
 `;
 
 const DestinationIcon = tw.img`
-object-contain scale-75
+md:w-32 lg:w-32 object-contain scale-52
 `;
 // Around location input fields
 const LocationBoxes = tw.div`
-flex flex-col 
+flex flex-col border
 `;
 
 //Search section
