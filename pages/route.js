@@ -15,8 +15,13 @@ function classNames(...classes) {
 const locations = [
   { name: "Philipsburg" },
   { name: "Maho" },
-  { name: "Dutch Quarter" },
   { name: "St. Peters" },
+  { name: "Dutch Quarter" },
+  { name: "French Quarter" },
+  { name: "Philipsburg" },
+  { name: "Maho" },
+  { name: "St. Peters" },
+  { name: "Dutch Quarter" },
   { name: "French Quarter" },
 ];
 
@@ -36,7 +41,7 @@ export default function Route() {
         </Profile>
       </Header>
       {/* Map */}
-      <Map />
+
       {/* User section */}
       <ActionItems>
         <ActionButtons>
@@ -59,19 +64,17 @@ export default function Route() {
         <RouteContainer>
           <RouteActions>
             <FromToIcons>
+              {/* Origin and dropdown menu */}
               <OriginIcon src="https://cdn-icons-png.flaticon.com/512/6686/6686693.png" />
-              <Line src="https://cdn-icons.flaticon.com/png/512/2652/premium/2652705.png?token=exp=1658366464~hmac=289a3e744afbd901c4d7cd74adbb1fd4" />
-              <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
-            </FromToIcons>
-            <LocationBoxes>
-              <div className="fixed top-16 w-72">
+
+              <div className=" mt-10 w-48 bg-black rounded-md">
                 <Listbox value={selected} onChange={setSelected}>
-                  <div className="relative mt-1">
-                    <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                      <span className="block truncate">{selected.name}</span>
-                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                  <div className="relative">
+                    <Listbox.Button className="relative w-full text-xl text-white cursor-default rounded-md bg-black py-4 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
+                      <span className=" block truncate">{selected.name}</span>
+                      <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
                         <SelectorIcon
-                          className="h-5 w-5 text-gray-400"
+                          className="h-7 w-7 text-white"
                           aria-hidden="true"
                         />
                       </span>
@@ -82,15 +85,15 @@ export default function Route() {
                       leaveFrom="opacity-100"
                       leaveTo="opacity-0"
                     >
-                      <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      <Listbox.Options className="absolute mt-1 max-h-60 w-full ml-4 overflow-auto rounded-md bg-black py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none md:text-md">
                         {locations.map((location, locationIdx) => (
                           <Listbox.Option
                             key={locationIdx}
                             className={({ active }) =>
                               `relative cursor-default select-none py-2 pl-10 pr-4 ${
                                 active
-                                  ? "bg-amber-100 text-amber-900"
-                                  : "text-gray-900"
+                                  ? "bg-blue-500 text-white"
+                                  : "bg-black text-white"
                               }`
                             }
                             value={location}
@@ -105,7 +108,7 @@ export default function Route() {
                                   {location.name}
                                 </span>
                                 {selected ? (
-                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
                                     <CheckIcon
                                       className="h-5 w-5"
                                       aria-hidden="true"
@@ -121,16 +124,15 @@ export default function Route() {
                   </div>
                 </Listbox>
               </div>
-            </LocationBoxes>
+
+              {/* <Line src="https://cdn-icons.flaticon.com/png/512/2652/premium/2652705.png?token=exp=1658366464~hmac=289a3e744afbd901c4d7cd74adbb1fd4" /> */}
+            </FromToIcons>
           </RouteActions>
           <SearchSection>
             <SearchButton>Search</SearchButton>
           </SearchSection>
         </RouteContainer>
       </ActionItems>
-      <Footer>
-        Developed by Joshua Bowers | 🇸🇽 | Commissioned by MP Rolando Brison.
-      </Footer>
     </Wrapper>
   );
 }
@@ -162,19 +164,19 @@ h-14 w-14 rounded-full object-contain border border-black
 `;
 // User section
 const ActionItems = tw.div`
-flex-1 flex flex-row border border-t-black border-t-4 border-b-black border-b-4
+ border border-t-black border-t-4 border-b-black border-b-4
 `;
 
 const ActionButtons = tw.div`
-flex flex-col w-1/6 justify-between border h-full items-center py-10
+flex justify-between border items-center
 `;
 
 const ActionButton = tw.div`
-flex border h-28 items-center flex-col justify-center transform hover:scale-110 transition text-xl w-28 shadow-md rounded-sm
+flex border  items-center flex-col justify-center transform hover:scale-110 transition text-xl w-64 shadow-md rounded-sm
 `;
 
 const ActionButtonImage = tw.img`
-h-2/5 
+
 `;
 // Text bottom
 const Footer = tw.div`
@@ -190,19 +192,19 @@ h-12 scale-75 object-contain rotate-180
 `;
 // The entire route div
 const RouteContainer = tw.div`
-w-5/6 flex flex-col border border-l-black
+ flex flex-col border border-l-black h-full h-screen
 `;
 // Around the icons and inputs
 const RouteActions = tw.div`
-flex h-3/4 justify-center h-full
+flex justify-center h-full border
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-md:w-32 lg:w-32 border
+border
 `;
 
 const OriginIcon = tw.img`
-object-contain scale-75
+object-contain scale-75 border
 `;
 
 const Line = tw.img`
@@ -210,7 +212,7 @@ scale-50 rotate-90 object-contain
 `;
 
 const DestinationIcon = tw.img`
-object-contain scale-75
+md:w-32 lg:w-32 object-contain scale-52
 `;
 // Around location input fields
 const LocationBoxes = tw.div`
