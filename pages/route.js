@@ -16,11 +16,7 @@ const locations = [
   { name: "Philipsburg" },
   { name: "Maho" },
   { name: "St. Peters" },
-  { name: "Dutch Quarter" },
-  { name: "French Quarter" },
-  { name: "Philipsburg" },
-  { name: "Maho" },
-  { name: "St. Peters" },
+  { name: "Cole bay" },
   { name: "Dutch Quarter" },
   { name: "French Quarter" },
 ];
@@ -38,7 +34,7 @@ export default function Route() {
         <BurgerMenu src="https://cdn-icons.flaticon.com/png/512/4254/premium/4254068.png?token=exp=1658535041~hmac=92e4d47bd94b0e64dbec75d9be49d812" />
       </Header>
       {/* Map */}
-
+ 
       {/* User section */}
       <ActionItems>
         <ActionButtons>
@@ -63,7 +59,7 @@ export default function Route() {
           <FromToIcons>
             {/* Origin and dropdown menu */}
             <LocationIcon src="https://cdn-icons-png.flaticon.com/512/6686/6686693.png" />
-            <div className=" mt-10 w-64 bg-black rounded-md">
+            <div className=" w-64 bg-black rounded-md">
               <Listbox value={selected} onChange={setSelected}>
                 <div className="relative">
                   <Listbox.Button className="relative w-full text-3xl text-white cursor-default rounded-md bg-black py-8 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
@@ -121,9 +117,10 @@ export default function Route() {
               </Listbox>
             </div>
           </FromToIcons>
+
           <FromToIcons>
-            <LocationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
-            <div className=" mt-10 w-64 bg-black rounded-md">
+            <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
+            <div className="w-64 bg-black rounded-md">
               <Listbox value={selected} onChange={setSelected}>
                 <div className="relative">
                   <Listbox.Button className="relative w-full text-3xl text-white cursor-default rounded-md bg-black py-8 mx-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black md:text-md">
@@ -205,17 +202,13 @@ const Logo = tw.img`
 h-14
 `;
 
-const Name = tw.div`
-mr-6 font-bold text-xl
-`;
-
 const BurgerMenu = tw.img`
 h-14 w-14 object-contain 
 `;
 // User section
 // "Action items" has the buttons: radio, bus route, donation
 const ActionItems = tw.div`
-h-screen
+
 `;
 
 const ActionButtons = tw.div`
@@ -223,7 +216,7 @@ flex justify-center gap-14 my-4
 `;
 
 const ActionButton = tw.div`
-flex items-center border-black border-4 justify-center flex-col transform hover:scale-110 transition shadow-lg rounded-md font-sans font-bold w-24 h-24 p-2
+flex border-black border-4 transform hover:scale-110 transition shadow-lg rounded-md w-32 h-32 p-4
 `;
 
 const ActionButtonImage = tw.img`
@@ -232,31 +225,29 @@ const ActionButtonImage = tw.img`
 // The entire route div
 // Actually the icons and dropdown menus
 const RouteContainer = tw.div`
- flex border border-black gap-10 mx-10 pb-64 my-10
+flex objects-contain justify-center gap-24
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-border border-black w-full 
+my-20 pb-72  
 `;
 
 const LocationIcon = tw.img`
-object-contain h-40
+object-contain h-36 w-36 ml-20
 `;
 
-const Line = tw.img`
-scale-50 rotate-90 object-contain
+const LocationDropdown = tw.div`
+`;
+
+const DestinationIcon = tw.img`
+object-contain h-36 w-32 ml-20
 `;
 
 //Search section
 const SearchSection = tw.div`
-p-10
+p-10 pt-60
 `;
 
 const SearchButton = tw.div`
-bg-black text-white text-center text-3xl rounded-md  p-6
-`;
-
-// Text box
-const Input = tw.input`
-h-14 bg-gray-200 my-6 mx-4 outline-none border-none h-16 w-96 pl-10 text-xl
+bg-black text-white text-center text-3xl rounded-md p-6
 `;
