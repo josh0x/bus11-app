@@ -229,15 +229,15 @@ const ActionButtonImage = tw.img`
 // The entire route div
 // Actually the icons and dropdown menus
 const RouteContainer = tw.div`
-flex objects-contain justify-center justify-between border h-5/6 p-20
+flex objects-contain justify-center justify-between h-5/6 p-20
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
-border 
+ 
 `;
 
 const TransferDiv = tw.div`
-border justify-center flex 
+p-4 justify-center flex 
 `;
 
 const LocationIcon = tw.img`
@@ -252,7 +252,7 @@ object-contain h-40 p-6 pl-16
 `;
 
 const TransferIcon = tw.img`
-object-contain h-24 mt-10 
+object-contain h-24 mt-4
 `;
 
 //Search section
