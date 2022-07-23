@@ -1,7 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
-import Map from "./components/Map";
 import { useEffect } from "react";
 
 const Search = () => {
@@ -16,7 +15,7 @@ const Search = () => {
 
       {/* Input Container */}
       <InputContainer>
-        <Map />
+       
       </InputContainer>
 
       {/* Saved Places */}
