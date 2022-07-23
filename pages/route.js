@@ -37,22 +37,6 @@ export default function Route() {
  
       {/* User section */}
       <ActionItems>
-        <ActionButtons>
-          <Link href="/route">
-            <ActionButton>
-              <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/4317/4317907.png" />
-              {/* Bus Route */}
-            </ActionButton>
-          </Link>
-          <ActionButton>
-            <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/8059/8059503.png" />
-            {/* Radio */}
-          </ActionButton>
-          <ActionButton>
-            <ActionButtonImage src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=022" />
-            {/* Donation */}
-          </ActionButton>
-        </ActionButtons>
 
         {/* Route Container */}
         <RouteContainer>
@@ -184,6 +168,24 @@ export default function Route() {
           <SearchButton>Search</SearchButton>
         </SearchSection>
       </ActionItems>
+
+      <ActionButtons>
+          <Link href="/route">
+            <ActionButton>
+              <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/4317/4317907.png" />
+              {/* Bus Route */}
+            </ActionButton>
+          </Link>
+          <ActionButton>
+            <ActionButtonImage src="https://cdn-icons-png.flaticon.com/512/8059/8059503.png" />
+            {/* Radio */}
+          </ActionButton>
+          <ActionButton>
+            <ActionButtonImage src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=022" />
+            {/* Donation */}
+          </ActionButton>
+        </ActionButtons>
+
     </Wrapper>
   );
 }
@@ -212,7 +214,7 @@ const ActionItems = tw.div`
 `;
 
 const ActionButtons = tw.div`
-flex justify-center gap-14 my-4 
+flex justify-center gap-14 py-6 border-t-4 border-black
 `;
 
 const ActionButton = tw.div`
