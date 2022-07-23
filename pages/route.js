@@ -44,7 +44,7 @@ export default function Route() {
             <div className=" w-64 bg-black rounded-md">
               <Listbox value={selected} onChange={setSelected}>
                 <div className="relative">
-                  <Listbox.Button className="relative w-full text-3xl text-white cursor-default rounded-md bg-black py-8 mx-14 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black">
+                  <Listbox.Button className="pl-6 relative w-full text-3xl text-white cursor-default rounded-md bg-black py-8 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black">
                     <span className=" block truncate">{selected.name}</span>
                     <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center ">
                       <SelectorIcon
@@ -111,7 +111,7 @@ export default function Route() {
             <div className=" w-64 bg-black rounded-md">
               <Listbox value={selected} onChange={setSelected}>
                 <div className="relative">
-                  <Listbox.Button className="relative w-full text-3xl text-white cursor-default rounded-md bg-black py-8 mx-14 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black">
+                  <Listbox.Button className="pl-6 relative w-full text-3xl text-white cursor-default rounded-md bg-black py-8  text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black">
                     <span className=" block truncate">{selected.name}</span>
                     <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center ">
                       <SelectorIcon
@@ -229,7 +229,7 @@ const ActionButtonImage = tw.img`
 // The entire route div
 // Actually the icons and dropdown menus
 const RouteContainer = tw.div`
-flex objects-contain justify-center justify-between border h-5/6 p-28
+flex objects-contain justify-center justify-between border h-5/6 p-20
 `;
 // Around all the From to Icons
 const FromToIcons = tw.div`
@@ -241,18 +241,18 @@ border justify-center flex
 `;
 
 const LocationIcon = tw.img`
-object-contain h-40 
+object-contain h-40 pl-10
 `;
 
 const LocationDropdown = tw.div`
 `;
 
 const DestinationIcon = tw.img`
-object-contain h-40 p-6
+object-contain h-40 p-6 pl-16
 `;
 
 const TransferIcon = tw.img`
-object-contain object-scale-down h-16 mt-16  
+object-contain h-24 mt-10 
 `;
 
 //Search section
