@@ -28,12 +28,9 @@ export default function Route() {
       {/* Nav bar */}
       <Header>
         <Link href="/">
-          <Logo src="https://i.pinimg.com/originals/c2/98/27/c2982793e4e308c03c9800c4a99f363d.jpg" />
+          <Image alt={`Logo`} src="/bus-11-twit.png" width={150} height={150} />
         </Link>
-        <BurgerMenu src="https://cdn-icons.flaticon.com/png/512/4254/premium/4254068.png?token=exp=1658535041~hmac=92e4d47bd94b0e64dbec75d9be49d812" />
       </Header>
-      {/* Map */}
-
       {/* User section */}
       <ActionItems>
         {/* Route Container */}
@@ -102,7 +99,7 @@ export default function Route() {
 
           {/* TRANSFER ICONS / BUTTON */}
           <TransferDiv>
-            <TransferIcon src="https://cdn-icons.flaticon.com/png/512/2652/premium/2652705.png?token=exp=1658546836~hmac=7ccb0c66b8c8d0940ff90f65a8075635" />
+            <TransferIcon src="https://cdn-icons.flaticon.com/png/512/2652/premium/2652705.png?token=exp=1658836902~hmac=23f61b3a0a9a94fca0d7ef59020cca37" />
           </TransferDiv>
 
           {/* Destination and dropdown menu */}
@@ -110,7 +107,7 @@ export default function Route() {
             <DestinationIcon src="https://cdn-icons-png.flaticon.com/512/447/447031.png" />
             <div className=" w-64 bg-black rounded-md">
               <Listbox value={selected} onChange={setSelected}>
-                <div className="relative">
+                <div className=" relative">
                   <Listbox.Button className="pl-6 relative w-full text-3xl text-white cursor-default rounded-md bg-black py-8  text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-black">
                     <span className=" block truncate">{selected.name}</span>
                     <span className=" pointer-events-none absolute inset-y-0 right-0 flex items-center ">
@@ -168,7 +165,9 @@ export default function Route() {
           </FromToIcons>
         </RouteContainer>
         <SearchSection>
-          <SearchButton>Search</SearchButton>
+          <Link href="/search">
+            <SearchButton>Search</SearchButton>
+          </Link>
         </SearchSection>
       </ActionItems>
 
@@ -199,16 +198,9 @@ flex flex-col h-screen
 
 // Navbar
 const Header = tw.div`
-flex justify-between items-center border-b-4 border-black px-4 py-4
+flex justify-center bg-black 
 `;
 
-const Logo = tw.img`
-h-14
-`;
-
-const BurgerMenu = tw.img`
-h-14 w-14 object-contain 
-`;
 // User section
 // "Action items" has the buttons: radio, bus route, donation
 const ActionItems = tw.div`
@@ -261,5 +253,5 @@ const SearchSection = tw.div`
 `;
 
 const SearchButton = tw.div`
-bg-black text-white text-center text-4xl rounded-md m-10 p-8 
+bg-black text-white text-center text-4xl rounded-md m-10 p-8 cursor-pointer
 `;

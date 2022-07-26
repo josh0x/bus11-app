@@ -1,8 +1,9 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import tw from "tailwind-styled-components";
 import Link from "next/link";
+import Map from "./components/Map";
 
 export default function Home() {
   return (
@@ -14,8 +15,8 @@ export default function Home() {
         </Link>
         {/* <ButtonContainer>
           <Link href="/"> */}
-            {/* <BackButton src="https://i.pinimg.com/564x/c4/c8/c4/c4c8c425bee8fb9e9af842a865442a57.jpg" /> */}
-            {/* <BackButton src="https://cdn-icons.flaticon.com/png/512/2040/premium/2040514.png?token=exp=1658074793~hmac=a9eea04ab4691db8cc17b3e54c292a63" />
+        {/* <BackButton src="https://i.pinimg.com/564x/c4/c8/c4/c4c8c425bee8fb9e9af842a865442a57.jpg" /> */}
+        {/* <BackButton src="https://cdn-icons.flaticon.com/png/512/2040/premium/2040514.png?token=exp=1658074793~hmac=a9eea04ab4691db8cc17b3e54c292a63" />
           </Link>
         </ButtonContainer> */}
         <Profile>
@@ -24,6 +25,7 @@ export default function Home() {
         </Profile>
       </Header>
       {/* Map */}
+      <Map />
       {/* User section */}
       <ActionItems>
         <ActionButtons>
@@ -45,9 +47,7 @@ export default function Home() {
             Donation
           </ActionButton>
         </ActionButtons>
-        <RouteContainer>
-          
-        </RouteContainer>
+        <RouteContainer></RouteContainer>
       </ActionItems>
       <Footer>
         Developed by Joshua Bowers | 🇸🇽 | Commissioned by MP Rolando Brison.
@@ -63,7 +63,7 @@ flex flex-col h-screen pl-10 pr-10 pt-2
 
 // Navbar
 const Header = tw.div`
-flex justify-between items-center pr-4 border-b-2 border-black pb-2
+flex justify-center items-center border-b-2 border-black pb-2
 `;
 
 const Logo = tw.img`
